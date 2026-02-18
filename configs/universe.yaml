@@ -1,8 +1,4 @@
 tickers:
   - AAPL
-  - MSFT
-  - SPY
-  - TSLA
-  - NVDA
 start_date: "2020-01-01"
 frequency: "1d"
