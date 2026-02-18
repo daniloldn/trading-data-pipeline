@@ -1,2 +1,2 @@
-# trading_data_pipeline
+# Trading data pipeline
 A data engineering project 
