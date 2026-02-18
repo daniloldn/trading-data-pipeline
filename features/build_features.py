@@ -13,7 +13,7 @@ with open(CONFIG_PATH, "r") as f:
 #geting yaml information 
 tickers = cfg["tickers"]
 
-#storing clean data path
+#storing features
 Path("data/features").mkdir(parents=True, exist_ok=True)
 
 #loading data and cleaning 
