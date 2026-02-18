@@ -17,10 +17,11 @@ start_date = cfg["start_date"]
 frequency = cfg.get("frequency", "1d")
 
 
+#storing data path 
+Path("data/raw").mkdir(parents=True, exist_ok=True)
 #downloading data
 for ticker in tickers:
-    data = yf.download(ticker, start=start_date)
-    Path("data/raw").mkdir(parents=True, exist_ok=True)
+    data = yf.download(ticker, start=start_date, interval=frequency)
     data.to_parquet(f"data/raw/{ticker}.parquet")
 
 
