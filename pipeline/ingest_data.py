@@ -22,7 +22,7 @@ def main():
     Path("data/raw").mkdir(parents=True, exist_ok=True)
     #downloading data
     for ticker in tickers:
-        data = yf.download(ticker, start=start_date, interval=frequency)
+        data = yf.download(ticker, start=start_date, interval=frequency, auto_adjust=False)
         data.to_parquet(f"data/raw/{ticker}.parquet")
 
     return None
