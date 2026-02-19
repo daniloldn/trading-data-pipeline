@@ -109,8 +109,8 @@ Lower drawdowns indicate more stable and risk-controlled performance.
 
 with st.expander("Technical Implementation Details"):
     st.markdown("""
-    - Data Source: Yahoo Finance (yfinance API)
-                - Limited to start date of 2025-01-01 because of API limit
+    - Data Source: Yahoo Finance (yfinance API):
+        - Limited to start date of 2025-01-01 because of API limit
     - Storage Format: Parquet files (data lake style)
     - Pipeline Orchestration: Modular Python scripts
     - Backtesting Methodology:
