@@ -1,4 +1,4 @@
 tickers:
   - AAPL
-start_date: "2020-01-01"
+start_date: "2025-01-01"
 frequency: "1d"

@@ -21,9 +21,13 @@ def main():
     #storing data path 
     Path("data/raw").mkdir(parents=True, exist_ok=True)
     #downloading data
+    data = yf.download(tickers, start=start_date, interval=frequency, auto_adjust=False)
     for ticker in tickers:
-        data = yf.download(ticker, start=start_date, interval=frequency, auto_adjust=False)
-        data.to_parquet(f"data/raw/{ticker}.parquet")
+        one = data.xs(ticker, axis=1, level=1)
+        if one.empty:
+           print(f"{ticker}: no data returned, skipping")
+           continue
+        one.to_parquet(f"data/raw/{ticker}.parquet")
 
     return None
 
