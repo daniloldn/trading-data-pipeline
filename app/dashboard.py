@@ -1,16 +1,44 @@
 import streamlit as st
 import pandas as pd 
+import subprocess
 from pathlib import Path
+
 
 st.title("Market Data Pipeline Dashboard")
 
+st.markdown("""
+## Project Overview
+This dashboard presents the results of an end-to-end financial data pipeline 
+that ingests market data, performs cleaning and feature engineering, and 
+evaluates a systematic trading strategy through backtesting.
 
+The pipeline architecture:
+Ingestion → Cleaning → Feature Engineering → Backtesting → Visualization
+""")
+
+#getting tickers
 files = list(Path("data/backtest/timeseries").glob("*_timeseries.parquet"))
 tickers = [f.stem.replace("_timeseries", "") for f in files]
+
+if not tickers:
+    st.warning("No backtest files found yet. Run the pipeline first.")
+    st.stop()
+
+#selceting ticker
 selected_ticker = st.selectbox("Select Ticker", tickers)
+
+#running pipeline
 if st.button("Run Data Pipeline"):
-    import subprocess
-    subprocess.run(["python", "run_pipeline.py"])
+    with st.spinner("Running pipeline..."):
+        result = subprocess.run(
+            ["python", "run_pipeline.py"],
+            capture_output=True,
+            text=True
+        )
+    st.text(result.stdout)
+    if result.returncode != 0:
+        st.error(result.stderr)
+    st.rerun()
 
 
 #getting the data
