@@ -1,4 +1,4 @@
 tickers:
-  - AMZN
+  - TSLA
 start_date: "2025-01-01"
 frequency: "1d"

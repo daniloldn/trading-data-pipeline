@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd 
 import subprocess
+import sys
 from pathlib import Path
 
 
@@ -49,7 +50,7 @@ selected_ticker = st.selectbox("Select Ticker", tickers)
 if st.button("Run Data Pipeline"):
     with st.spinner("Running pipeline..."):
         result = subprocess.run(
-            ["python", "run_pipeline.py"],
+            [sys.executable, "run_pipeline.py"],
             capture_output=True,
             text=True
         )

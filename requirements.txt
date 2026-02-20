@@ -1,5 +1,5 @@
-streamlit
-pandas
-yfinance
-pyyaml
-pyarrow
+streamlit==1.54.0
+pandas==2.3.3
+yfinance==0.2.57
+pyyaml==6.0.3
+pyarrow==21.0.0

@@ -53,7 +53,7 @@ def main():
         df["drawdown"] = drawdown
         keep = ["Close", "returns", "momentum", "signal", "position", "strategy_returns_net", "equity", "drawdown"]
         df[keep].to_parquet(f"data/backtest/timeseries/{ticker}_timeseries.parquet")
-        return None
+
 if __name__ == "__main__":
     main()
   
